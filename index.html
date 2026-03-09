@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shawn | 資深後端 | 爬蟲架構師</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;500;700&display=swap');
+
+        body {
+            background-color: #0d1117;
+            color: #c9d1d9;
+            font-family: 'Fira Code', monospace;
+            scroll-behavior: smooth;
+        }
+
+        .terminal-glow {
+            box-shadow: 0 0 20px rgba(56, 239, 125, 0.1);
+            border: 1px solid #30363d;
+        }
+
+        .accent-color {
+            color: #38ef7d;
+        }
+
+        .bg-accent {
+            background-color: #23863622;
+            border: 1px solid #238636;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+            margin-bottom: 2.5rem;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stat-card {
+            background: #161b22;
+            border: 1px solid #30363d;
+            transition: all 0.3s;
+            padding: 1.5rem 1rem;
+        }
+
+        .lang-en {
+            display: none;
+        }
+
+        .active-lang {
+            background-color: #238636 !important;
+            color: white !important;
+            border-color: #38ef7d !important;
+        }
+
+        hr {
+            border: 0;
+            border-top: 1px solid #30363d;
+            margin: 2.5rem 0;
+        }
+
+        .project-img {
+            height: 160px;
+            width: 100%;
+            object-fit: cover;
+            opacity: 0.5;
+            transition: 0.3s;
+            border-bottom: 1px solid #30363d;
+        }
+
+        .stat-card:hover .project-img {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+
+<body class="p-4 md:p-10">
+
+    <div class="max-w-5xl mx-auto">
+        <div
+            class="fixed top-4 right-4 z-50 flex items-center gap-4 bg-[#0d1117]/90 p-1 rounded-lg border border-[#30363d]">
+            <a href="https://www.linkedin.com/in/shawnhsiao/" target="_blank"
+                class="text-xl text-gray-400 hover:text-[#0a66c2] transition-all px-2">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <div class="flex gap-1">
+                <button id="btn-zh" onclick="setLang('zh')"
+                    class="active-lang px-3 py-1 rounded text-xs font-bold transition-all">中文</button>
+                <button id="btn-en" onclick="setLang('en')"
+                    class="px-3 py-1 rounded text-xs font-bold transition-all text-gray-500 hover:text-white">EN</button>
+            </div>
+        </div>
+
+        <header class="terminal-glow rounded-xl overflow-hidden mb-12 reveal active">
+            <div class="bg-[#161b22] px-4 py-2 flex items-center justify-between border-b border-[#30363d]">
+                <div class="flex gap-1.5">
+                    <div class="w-2.5 h-2.5 bg-[#ff5f56] rounded-full"></div>
+                    <div class="w-2.5 h-2.5 bg-[#ffbd2e] rounded-full"></div>
+                    <div class="w-2.5 h-2.5 bg-[#27c93f] rounded-full"></div>
+                </div>
+                <span class="text-[10px] text-gray-500 font-mono tracking-widest uppercase">SHAWN_V1.0</span>
+            </div>
+            <div class="p-8 md:p-10 bg-gradient-to-br from-[#0d1117] to-[#161b22]">
+                <div class="flex flex-col lg:flex-row justify-between items-center gap-8">
+                    <div class="text-center lg:text-left">
+                        <h1 class="text-5xl font-extrabold text-white mb-2 tracking-tighter">蕭聖尚 <span
+                                class="accent-color">Shawn</span></h1>
+                        <p class="text-xl font-bold accent-color mb-6">
+                            <span class="lang-zh">資深後端 | 爬蟲架構師</span>
+                            <span class="lang-en">Sr. Backend | Crawler Architect</span>
+                        </p>
+                        <div class="flex flex-wrap justify-center lg:justify-start gap-4 text-sm">
+                            <span><i class="fas fa-envelope accent-color mr-2"></i>eddy210968@gmail.com</span>
+                            <span class="lang-zh"><i class="fas fa-university accent-color mr-2"></i>國立政治大學 會計系</span>
+                            <span class="lang-en"><i class="fas fa-university accent-color mr-2"></i>NCCU,
+                                Accounting</span>
+                        </div>
+                    </div>
+                    <div class="bg-[#0d1117] p-6 border-l-4 border-[#38ef7d] rounded-r-lg max-w-sm">
+                        <h4 class="accent-color text-[10px] font-bold mb-2 uppercase tracking-widest">
+                            <span class="lang-zh">核心效率突破</span><span class="lang-en">Efficiency Breakthrough</span>
+                        </h4>
+                        <div class="text-4xl font-black text-white mb-2">5X <span
+                                class="text-xs font-normal text-gray-500 italic">Velocity</span></div>
+                        <p class="text-[11px] text-gray-400 leading-relaxed">
+                            <span class="lang-zh">全面導入 <b>SDD (AI 輔助開發)</b>。80% 程式碼由 AI Agent 產出，搭配 <b>TDD</b> 驗證，確保極速下
+                                100% 邏輯正確性。</span>
+                            <span class="lang-en">Full <b>SDD</b> workflow. 80% AI-generated code with <b>TDD</b>
+                                validation, ensuring 100% logic integrity at 5x speed.</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-12 reveal active">
+            <div class="stat-card rounded-lg text-center">
+                <div class="text-3xl font-black accent-color mb-1">3,000+</div>
+                <div class="text-[10px] text-gray-500 uppercase font-bold">
+                    <span class="lang-zh">最高吞吐量 (RPS)</span><span class="lang-en">Peak RPS</span>
+                </div>
+            </div>
+            <div class="stat-card rounded-lg text-center">
+                <div class="text-3xl font-black accent-color mb-1">99.3%</div>
+                <div class="text-[10px] text-gray-500 uppercase font-bold">
+                    <span class="lang-zh">延遲優化幅度</span><span class="lang-en">Latency Reduction</span>
+                </div>
+            </div>
+            <div class="stat-card rounded-lg text-center">
+                <div class="text-3xl font-black accent-color mb-1">10M+</div>
+                <div class="text-[10px] text-gray-500 uppercase font-bold">
+                    <span class="lang-zh">每日爬取量</span><span class="lang-en">Daily Scrape</span>
+                </div>
+            </div>
+            <div class="stat-card rounded-lg text-center">
+                <div class="text-3xl font-black accent-color mb-1">50%</div>
+                <div class="text-[10px] text-gray-500 uppercase font-bold">
+                    <span class="lang-zh">成本節省</span><span class="lang-en">Cost Saved</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="reveal active">
+            <h2 class="text-2xl font-bold text-white mb-8 border-b border-[#30363d] pb-2 flex items-center gap-3">
+                <i class="fas fa-terminal accent-color text-sm"></i>
+                <span class="lang-zh">職涯經歷</span><span class="lang-en">Experience</span>
+            </h2>
+
+            <div class="space-y-10">
+                <div class="relative pl-8 border-l-2 border-[#38ef7d]">
+                    <div class="absolute -left-[7px] top-0 w-3 h-3 bg-[#38ef7d] rounded-full"></div>
+                    <div class="flex flex-col md:flex-row justify-between items-baseline mb-4">
+                        <h3 class="text-lg font-bold text-white">KICKS CREW — <span class="accent-color">資深後端工程師 (爬蟲) /
+                                Sr. Crawler Engineer</span></h3>
+                        <span class="text-xs font-mono text-gray-500">2024.10 - PRESENT</span>
+                    </div>
+                    <ul class="text-gray-400 space-y-2 text-sm lang-zh">
+                        <li>• 於 <b>GKE (GCP K8s)</b> 環境管理大規模爬蟲集群，日數據量穩定維持在 <b>1,000 萬筆</b> 以上。</li>
+                        <li>• 組合 Proxy, TLS, HTTP version, Request headers 成功破解 <b>Akamai, Cloudflare</b> 反爬機制。</li>
+                        <li>• 優化 Proxy 架構調度邏輯，節省年度成本逾 <b>50%</b>。</li>
+                        <li>• 維護 Django 爬蟲架構，優化 DB Query 達成 <b>4x 速度提升</b>，增加 30% 商品上架量。</li>
+                        <li>• 開發付款金流 API 串接與測試，處理每日 200+ 訂單量。</li>
+                    </ul>
+                    <ul class="text-gray-400 space-y-2 text-sm lang-en">
+                        <li>• Managed large-scale clusters on <b>GKE (GCP K8s)</b>, processing <b>10M+</b> daily data
+                            points.</li>
+                        <li>• Bypassed <b>Akamai & Cloudflare</b> via Proxy/TLS/HTTP header optimization.</li>
+                        <li>• Optimized proxy architecture, reducing annual costs by over <b>50%</b>.</li>
+                        <li>• Optimized Django/DB queries for <b>4x speedup</b> and 30% more listings.</li>
+                        <li>• Developed and tested payment gateway APIs for 200+ daily transactions.</li>
+                    </ul>
+                </div>
+
+                <div class="relative pl-8 border-l-2 border-gray-700">
+                    <div class="flex flex-col md:flex-row justify-between items-baseline mb-4">
+                        <h3 class="text-lg font-bold text-white">酷訊搜索 (KooData) — <span class="accent-color">後端工程師 /
+                                Backend Engineer</span></h3>
+                        <span class="text-xs font-mono text-gray-500">2022.08 - 2024.09</span>
+                    </div>
+                    <ul class="text-gray-400 space-y-2 text-sm lang-zh">
+                        <li>• 使用 <b>GraphQL</b> 整合 Meta/Google 廣告 API，優化投遞廣告旅程，讓新人也能發佈高品質廣告。</li>
+                        <li>• 於 <b>GCP</b> 實踐 <b>RAG (檢索增強生成)</b> 技術生產廣告文案，減少 <b>40%</b> 以上生產時間。</li>
+                        <li>• 開發即時監控系統串接 Slack API，降低 AM/PM 管理負擔 <b>30%</b>。</li>
+                        <li>• 優化 CI/CD 流程，利用快取技術縮短 <b>50%</b> 部署時間。</li>
+                    </ul>
+                    <ul class="text-gray-400 space-y-2 text-sm lang-en">
+                        <li>• Optimized ad journeys via <b>GraphQL</b> with Meta/Google APIs, enabling high-quality ad
+                            publishing.</li>
+                        <li>• Implemented <b>RAG</b> on <b>GCP</b> for automated ad copywriting, saving over <b>40%</b>
+                            production time.</li>
+                        <li>• Built Slack-integrated monitoring systems, reducing management overhead by <b>30%</b>.
+                        </li>
+                        <li>• Optimized CI/CD caching mechanisms, reducing deployment time by <b>50%</b>.</li>
+                    </ul>
+                </div>
+
+                <div class="relative pl-8 border-l-2 border-gray-700">
+                    <div class="flex flex-col md:flex-row justify-between items-baseline mb-4">
+                        <h3 class="text-lg font-bold text-white">attittu 鈦度科技 — <span class="accent-color">技術顧問 /
+                                Consultant</span></h3>
+                        <span class="text-xs font-mono text-gray-500">2021.09 - 2022.08</span>
+                    </div>
+                    <ul class="text-gray-400 space-y-2 text-sm lang-zh">
+                        <li>• 提供專業技術支持，直接管理 <b>破千人規模</b> 之企業客戶，主導 SaaS 上線架構準備。</li>
+                        <li>• 負責維護 1,000 萬筆級別之資料庫，試用期過後因傑出表現獲 <b>加薪 25%</b>。</li>
+                    </ul>
+                    <ul class="text-gray-400 space-y-2 text-sm lang-en">
+                        <li>• Provided technical support for <b>1000+ employee</b> enterprise clients, leading SaaS
+                            go-live readiness.</li>
+                        <li>• Maintained 10M+ scale databases; received a <b>25% salary increase</b> post-probation.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <hr>
+
+        <section class="reveal active">
+            <h2 class="text-2xl font-bold text-white mb-8 border-b border-[#30363d] pb-2 flex items-center gap-3">
+                <i class="fas fa-user-gear accent-color text-sm"></i>
+                <span class="lang-zh">個人專案 (獨立開發)</span><span class="lang-en">Personal Projects (Solo)</span>
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="stat-card rounded-lg overflow-hidden flex flex-col border-t-4 border-[#38ef7d]">
+                    <div
+                        class="h-32 bg-gradient-to-r from-green-900/50 to-black flex items-center justify-center font-bold text-white italic">
+                        PERFORMANCE ENGINE</div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-white mb-4 italic">1000x-rps-server</h3>
+                        <div class="text-[11px] text-gray-400 space-y-3 lang-zh leading-relaxed">
+                            <p class="font-bold text-white">四階段架構演進優化：</p>
+                            <ul class="space-y-2 border-l border-gray-700 pl-3">
+                                <li>• <b class="text-[#38ef7d]">v1 → v2:</b> 導入 <b>Atomic Lua Scripts</b>。將 Redis
+                                    並發邏輯腳本化，大幅減少網路往返開銷與鎖競爭。</li>
+                                <li>• <b class="text-[#38ef7d]">v2 → v3:</b> <b>Gunicorn 多核併發</b>。切換至 Gunicorn + 4
+                                    Uvicorn workers，極大化 CPU 多核心效能利用率。</li>
+                                <li>• <b class="text-[#38ef7d]">v3 → v4 (Async Kafka):</b> <b>非阻塞異步發送</b>。重構
+                                    <code>kafka_worker</code> 採用 <code>asyncio.create_task</code> 並移除
+                                    <code>send_and_wait</code>。
+                                </li>
+                                <li>• <b class="text-white">結果:</b> 最終達成 <b>2,977 RPS (6x 提升)</b> 且 1000 位用戶下延遲僅 9.7 ms
+                                    (縮減 99.3%)。</li>
+                            </ul>
+                        </div>
+                        <div class="text-[11px] text-gray-400 space-y-3 lang-en leading-relaxed">
+                            <p class="font-bold text-white">4-Stage Performance Evolution:</p>
+                            <ul class="space-y-2 border-l border-gray-700 pl-3">
+                                <li>• <b class="text-[#38ef7d]">v1 → v2:</b> <b>Atomic Lua Scripts</b> to eliminate
+                                    Redis locking and reduce RTT.</li>
+                                <li>• <b class="text-[#38ef7d]">v2 → v3:</b> <b>Gunicorn Multi-workers</b> to maximize
+                                    multi-core CPU utilization.</li>
+                                <li>• <b class="text-[#38ef7d]">v3 → v4 (Async Kafka):</b> <b>Non-blocking sends</b>
+                                    using <code>asyncio.create_task</code>.</li>
+                                <li>• <b class="text-white">Result:</b> Hit <b>2,977 RPS (6x boost)</b>, <b>99.3%</b>
+                                    latency reduction (9.7 ms).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-card rounded-lg overflow-hidden flex flex-col border-t-4 border-orange-500">
+                    <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=800"
+                        class="project-img" alt="Cafe">
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-white mb-4">
+                            <span class="lang-zh">全端咖啡廳分佈式爬蟲系統</span><span class="lang-en">Full-Stack Distributed Cafe
+                                Crawler</span>
+                        </h3>
+                        <p class="text-[11px] text-gray-400 lang-zh leading-relaxed">
+                            使用 <b>Scrapy + Playwright + Celery</b> 爬取 Google Maps 海量資料。整合 <b>Meilisearch</b> 搜尋引擎，實作
+                            <b>100ms 內</b> 極速容錯檢索 (Typo Tolerance)，並支援關鍵字、價位、鄰近捷運站之複合條件查詢。
+                        </p>
+                        <p class="text-[11px] text-gray-400 lang-en leading-relaxed">
+                            Distributed system via <b>Scrapy + Playwright + Celery</b> for Google Maps.
+                            <b>Meilisearch</b> for sub-100ms Typo Tolerance search with complex filters.
+                        </p>
+                    </div>
+                </div>
+
+                <div
+                    class="stat-card rounded-lg overflow-hidden flex flex-col md:col-span-2 border-t-4 border-[#478cbf]">
+                    <div class="p-8">
+                        <div class="flex flex-col lg:flex-row gap-8">
+                            <div class="lg:w-1/3">
+                                <h3 class="text-2xl font-bold text-white flex items-center gap-3 mb-2 italic">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Godot_icon.svg"
+                                        class="w-8 h-8"> Daylight 21
+                                </h3>
+                                <p class="text-xs text-gray-500 mb-4 uppercase font-bold tracking-widest">Godot
+                                    Rogue-lite Horde Survival</p>
+                                <p class="text-sm text-gray-400 lang-zh leading-loose">
+                                    啟發自 <b>Vampire Survivors</b>。在極限生存 21 晚的過程中，玩家需面對無盡敵軍並保護核心據點。
+                                </p>
+                                <p class="text-sm text-gray-400 lang-en leading-loose">
+                                    Inspired by <b>Vampire Survivors</b>. Survive 21 grueling nights against endless
+                                    hordes while defending the stronghold.
+                                </p>
+                            </div>
+                            <div class="lg:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-6 text-[11px] text-gray-400">
+                                <ul class="space-y-3 border-l border-gray-800 pl-4 lang-zh">
+                                    <li>• <b class="text-white">雙人 Local Co-op:</b> 同屏動態相機縮放 (1.8x - 4.0x)。</li>
+                                    <li>• <b class="text-white">Tower-Carrier 進化:</b> 靜態塔結合精英突變體，轉化為隨身移動載具。</li>
+                                    <li>• <b class="text-white">動態晝夜生存:</b> 即時時鐘制，每夜 1.25 分鐘，需在極短時間內決策建築布局。</li>
+                                </ul>
+                                <ul class="space-y-3 border-l border-gray-800 pl-4 lang-zh">
+                                    <li>• <b class="text-white">突變融合系統:</b> 融合 3 種組件生成突變體，再結合融合石創造 Synergy Artifacts。
+                                    </li>
+                                    <li>• <b class="text-white">高度優化:</b> 實作場景快取與對象池，在高強度彈幕下穩定維持 60 FPS。</li>
+                                    <li>• <b class="text-white">Rogue-lite EXP:</b> 升級後從 3 種隨機能力中挑選，打造專屬流派。</li>
+                                </ul>
+                                <ul class="space-y-3 border-l border-gray-800 pl-4 lang-en">
+                                    <li>• <b class="text-white">Local Co-op:</b> Dynamic camera scaling (1.8x - 4.0x).
+                                    </li>
+                                    <li>• <b class="text-white">Tower Evolution:</b> Static towers evolve into mobile
+                                        carriers.</li>
+                                    <li>• <b class="text-white">Day-Night Survival:</b> 1.25 min nights with real-time
+                                        decision making.</li>
+                                </ul>
+                                <ul class="space-y-3 border-l border-gray-800 pl-4 lang-en">
+                                    <li>• <b class="text-white">Mutation System:</b> Merge components for powerful
+                                        Synergy Artifacts.</li>
+                                    <li>• <b class="text-white">High Optimization:</b> Object pooling for stable 60 FPS
+                                        under heavy loads.</li>
+                                    <li>• <b class="text-white">Rogue-lite EXP:</b> Choose from 3 randomized perks per
+                                        level.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="stat-card rounded-lg overflow-hidden flex flex-col md:col-span-2 border-t-4 border-purple-500">
+                    <div class="h-24 bg-gradient-to-r from-purple-900/40 to-pink-900/40 flex items-center px-8">
+                        <h3 class="text-xl font-bold text-white italic">
+                            <span class="lang-zh">社群大平台</span><span class="lang-en">Social Automation Hub</span>
+                        </h3>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-sm text-gray-400 lang-zh leading-relaxed">
+                            自動管理 100+ Tiktok/FB 帳號排程留言、按讚與分享。實作精準頻率控制以規避風控偵測，提升帳號存活率與社群曝光效能。
+                        </p>
+                        <p class="text-sm text-gray-400 lang-en leading-relaxed">
+                            Automated management for 100+ accounts. Intelligent frequency control to bypass anti-spam
+                            and maximize reach.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center text-gray-600 text-[10px] py-16 border-t border-[#30363d]">
+            <p>SHAWN_SYSTEM // VERSION_6.4 // DRIVEN_BY_SDD_TDD</p>
+        </footer>
+    </div>
+
+    <script>
+        function setLang(lang) {
+            const zhElems = document.querySelectorAll('.lang-zh');
+            const enElems = document.querySelectorAll('.lang-en');
+            const btnZh = document.getElementById('btn-zh');
+            const btnEn = document.getElementById('btn-en');
+
+            if (lang === 'zh') {
+                zhElems.forEach(el => el.style.display = 'block');
+                enElems.forEach(el => el.style.display = 'none');
+                btnZh.classList.add('active-lang');
+                btnZh.classList.remove('text-gray-500');
+                btnEn.classList.remove('active-lang');
+                btnEn.classList.add('text-gray-500');
+            } else {
+                zhElems.forEach(el => el.style.display = 'none');
+                enElems.forEach(el => el.style.display = 'block');
+                btnZh.classList.remove('active-lang');
+                btnZh.classList.add('text-gray-500');
+                btnEn.classList.add('active-lang');
+                btnEn.classList.remove('text-gray-500');
+            }
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+
+</html>
