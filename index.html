@@ -142,13 +142,19 @@
             position: absolute;
             bottom: 0;
             left: 10px;
-            box-shadow: 
-                0 -4px 0 #238636, /* torso */
-                -4px 0 0 #238636, 4px 0 0 #238636, /* shoulders */
-                0 -8px 0 #f0ad4e, /* neck/face base */
-                -4px -8px 0 #f0ad4e, 4px -8px 0 #f0ad4e, /* face */
-                -4px -12px 0 #f0ad4e, 0 -12px 0 #f0ad4e, 4px -12px 0 #f0ad4e, /* head */
-                -8px -12px 0 #30363d, 8px -12px 0 #30363d, /* hair/hat */
+            box-shadow:
+                0 -4px 0 #238636,
+                /* torso */
+                -4px 0 0 #238636, 4px 0 0 #238636,
+                /* shoulders */
+                0 -8px 0 #f0ad4e,
+                /* neck/face base */
+                -4px -8px 0 #f0ad4e, 4px -8px 0 #f0ad4e,
+                /* face */
+                -4px -12px 0 #f0ad4e, 0 -12px 0 #f0ad4e, 4px -12px 0 #f0ad4e,
+                /* head */
+                -8px -12px 0 #30363d, 8px -12px 0 #30363d,
+                /* hair/hat */
                 -4px -16px 0 #30363d, 0 -16px 0 #30363d, 4px -16px 0 #30363d;
         }
 
@@ -163,9 +169,19 @@
         }
 
         @keyframes wave {
-            0%, 100% { transform: rotate(0deg); }
-            25% { transform: rotate(45deg); }
-            75% { transform: rotate(-10deg); }
+
+            0%,
+            100% {
+                transform: rotate(0deg);
+            }
+
+            25% {
+                transform: rotate(45deg);
+            }
+
+            75% {
+                transform: rotate(-10deg);
+            }
         }
 
         .wave-animation {
@@ -177,6 +193,7 @@
                 bottom: 1rem;
                 right: 1rem;
             }
+
             #speech-bubble {
                 max-width: 150px;
                 font-size: 0.6rem;
@@ -212,8 +229,18 @@
                 <span class="text-[10px] text-gray-500 font-mono tracking-widest uppercase">SHAWN_V1.0</span>
             </div>
             <div class="p-8 md:p-10 bg-gradient-to-br from-[#0d1117] to-[#161b22]">
-                <div class="flex flex-col lg:flex-row justify-between items-center gap-8">
-                    <div class="text-center lg:text-left">
+                <div class="flex flex-col lg:flex-row justify-between items-start gap-12">
+                    <!-- 1. Video Animation (30%) -->
+                    <div class="lg:basis-[30%] flex justify-center lg:justify-start">
+                        <video autoplay loop muted playsinline preload="auto"
+                            class="w-64 h-64 rounded-lg terminal-glow border border-[#30363d] object-cover">
+                            <source src="hi_animation.webm" type="video/webm">
+                            <source src="hi_animation.mp4" type="video/mp4">
+                        </video>
+                    </div>
+
+                    <!-- 2. Name & Information (40%) -->
+                    <div class="lg:basis-[40%] text-center lg:text-left">
                         <h1 class="text-5xl font-extrabold text-white mb-2 tracking-tighter">蕭聖尚 <span
                                 class="accent-color">Shawn</span></h1>
                         <p class="text-xl font-bold accent-color mb-6">
@@ -227,14 +254,16 @@
                                 Accounting</span>
                         </div>
                     </div>
-                    <div class="bg-[#0d1117] p-6 border-l-4 border-[#38ef7d] rounded-r-lg max-w-sm">
-                        <h4 class="accent-color text-[10px] font-bold mb-2 uppercase tracking-widest">
+
+                    <!-- 3. Efficiency Breakthrough (30%) -->
+                    <div class="lg:basis-[30%] bg-[#0d1117] p-8 border-l-4 border-[#38ef7d] rounded-r-lg">
+                        <h4 class="accent-color text-xs font-bold mb-3 uppercase tracking-widest">
                             <span class="lang-zh">核心效率突破</span><span class="lang-en">Efficiency Breakthrough</span>
                         </h4>
-                        <div class="text-4xl font-black text-white mb-2">5X <span
-                                class="text-xs font-normal text-gray-500 italic">Velocity</span></div>
-                        <p class="text-[11px] text-gray-400 leading-relaxed">
-                            <span class="lang-zh">全面導入 <b>SDD (AI 輔助開發)</b>。80% 程式碼由 AI Agent 產出，搭配 <b>TDD</b> 驗證，確保極速下
+                        <div class="text-5xl font-black text-white mb-3">5X <span
+                                class="text-sm font-normal text-gray-500 italic">Velocity</span></div>
+                        <p class="text-sm text-gray-400 leading-relaxed">
+                            <span class="lang-zh"><b>SDD & TDD </b></br>80% 程式碼由 AI Agent 產出，搭配 <b>TDD</b> 驗證，確保極速下
                                 100% 邏輯正確性。</span>
                             <span class="lang-en">Full <b>SDD</b> workflow. 80% AI-generated code with <b>TDD</b>
                                 validation, ensuring 100% logic integrity at 5x speed.</span>
@@ -354,12 +383,16 @@
             </h2>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="stat-card rounded-lg overflow-hidden flex flex-col border-t-4 border-[#38ef7d]">
-                    <div
-                        class="h-32 bg-gradient-to-r from-green-900/50 to-black flex items-center justify-center font-bold text-white italic">
-                        PERFORMANCE ENGINE</div>
+                <div class="stat-card rounded-lg overflow-hidden flex flex-col border-t-4 border-[#38ef7d] group">
+                    <img src="optimization.webp" class="project-img h-32 w-full object-cover" alt="Performance Engine">
                     <div class="p-6">
-                        <h3 class="text-lg font-bold text-white mb-4 italic">1000x-rps-server</h3>
+                        <h3 class="text-lg font-bold text-white mb-4 italic flex items-center justify-between">
+                            <a href="https://github.com/Emperor1019859/1000x-rps-server" target="_blank"
+                                class="hover:underline accent-color flex items-center gap-2">
+                                1000x-rps-server
+                                <i class="fab fa-github text-sm opacity-50 group-hover:opacity-100 transition-all"></i>
+                            </a>
+                        </h3>
                         <div class="text-[11px] text-gray-400 space-y-3 lang-zh leading-relaxed">
                             <p class="font-bold text-white">四階段架構演進優化：</p>
                             <ul class="space-y-2 border-l border-gray-700 pl-3">
@@ -567,7 +600,7 @@
                 }
             });
         }, { threshold: 0.5 });
-        
+
         document.querySelectorAll('.reveal, header, section').forEach(el => observer.observe(el));
     </script>
 </body>
