@@ -21,8 +21,8 @@ The current `index.html` features a single-page terminal-themed resume. The hero
 - **Styling**: Apply a small `rounded-lg` or `rounded-full` border with a subtle green glow (consistent with `.terminal-glow`) to the video element.
 - **Performance**: 
   - The `preload="auto"` attribute is used to start downloading the video as soon as the page loads.
-  - **Git LFS Removal**: To ensure compatibility with GitHub Pages (which does not natively serve LFS assets), Git LFS tracking has been removed and the `.gitattributes` file has been deleted. The `.mp4` file is now tracked directly in the repository.
-  - **Compression**: The video is ~1.7MB, which is suitable for direct tracking and fast CDN delivery.
+  - **Dual-Source Delivery**: Both WebM and MP4 versions are provided. WebM is prioritized for modern browsers due to its superior compression (~880KB), while MP4 (~1.7MB) remains as a fallback for iOS and older browsers.
+  - **Git LFS Removal**: To ensure compatibility with GitHub Pages (which does not natively serve LFS assets), Git LFS tracking has been removed and the `.gitattributes` file has been deleted.
 
 ## Risks / Trade-offs
 

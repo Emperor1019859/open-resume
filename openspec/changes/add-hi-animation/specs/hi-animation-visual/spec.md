@@ -1,11 +1,17 @@
 ## ADDED Requirements
 
 ### Requirement: Animation Asset Source
-The system SHALL use `hi_animation.mp4` as the source for the hero section greeting animation.
+The system SHALL use `hi_animation.webm` as the primary source and `hi_animation.mp4` as the fallback source for the hero section greeting animation.
 
-#### Scenario: Video file exists
+#### Scenario: Browser supports WebM
 - **WHEN** the browser loads `index.html`
-- **THEN** it SHALL request `hi_animation.mp4` from the root directory
+- **AND** the browser supports WebM
+- **THEN** it SHALL request and play `hi_animation.webm`
+
+#### Scenario: Browser does not support WebM
+- **WHEN** the browser loads `index.html`
+- **AND** the browser does not support WebM
+- **THEN** it SHALL fallback to `hi_animation.mp4`
 
 ### Requirement: Autoplay and Behavior
 The animation video SHALL autoplay on page load, loop infinitely (recursive playback), and be muted by default to ensure compatibility with modern browser policies.

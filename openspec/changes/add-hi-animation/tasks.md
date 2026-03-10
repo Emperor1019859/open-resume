@@ -15,3 +15,9 @@
 - [x] 3.1 Open `index.html` in a browser to confirm the video autoplays and loops correctly.
 - [x] 3.2 Test responsive behavior by shrinking the browser window to mobile size.
 - [x] 3.3 Confirm the asset is tracked as a standard Git file (not LFS).
+
+## 4. Performance Optimization
+
+- [x] 4.1 Ensure `hi_animation.webm` (optimized version) is placed in the project root.
+- [x] 4.2 Update `<video>` element to use multiple `<source>` tags (WebM prioritized, MP4 fallback).
+- [x] 4.3 Verify both files are tracked directly in Git.

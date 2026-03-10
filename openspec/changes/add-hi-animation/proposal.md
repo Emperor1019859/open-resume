@@ -4,7 +4,7 @@ Enhance the visual appeal and interactivity of the hero section by adding a pers
 
 ## What Changes
 
-- **Add Animation Asset**: Include `hi_animation.mp4` in the project assets, managed by Git LFS to maintain repository efficiency.
+- **Add Animation Assets**: Include `hi_animation.webm` (high performance) and `hi_animation.mp4` (fallback) in the project assets, managed directly in Git for GitHub Pages compatibility.
 - **Header Modification**: Update the hero section in `index.html` to include the video animation positioned prominently beside the main title.
 - **Styling**: Apply CSS to ensure the video integrates seamlessly with the existing dark terminal aesthetic and remains responsive.
 
